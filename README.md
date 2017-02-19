@@ -1,1 +1,1 @@
-TBU
+For more information, please visit the blog https://buoctrenmay.wordpress.com/2017/02/19/content-audit-tool/
