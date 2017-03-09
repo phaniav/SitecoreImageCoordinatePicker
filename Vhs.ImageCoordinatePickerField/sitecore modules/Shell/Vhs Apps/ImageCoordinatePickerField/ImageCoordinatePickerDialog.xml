@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<control xmlns:def="Definition" xmlns="http://schemas.sitecore.net/Visual-Studio-Intellisense">
+  <ImageCoordinatePickerDialog>
+    <!--Init Script-->
+
+    <Script src="/sitecore modules/Shell/Vhs Apps/ImageCoordinatePickerField/js/jquery-2.1.0.min.js" key="imageCoordinatePicker" Language="javascript"></Script>
+
+    <Script Language="javascript">
+        var $J = jQuery.noConflict();
+
+        $J(document).ready(function() {
+
+          $J('#photo').click(function(e) {
+          var offset = $J('#ImageFrame').offset();
+          var relativeX = e.pageX - offset.left;
+          var relativeY = e.pageY - offset.top;
+
+          var width = $J('#ImageFrame').width();
+          var height = $J('#ImageFrame').height();
+
+          var percentageLeft = relativeX * 100 / width;
+          var percentageTop = relativeY * 100 / height;
+
+          $J('#TextBoxCoordinate').val('' + percentageTop + ', ' + percentageLeft + '');
+
+          });
+        });
+    </Script>
+
+    <Stylesheet>
+        
+      table tr td {
+        padding-left: 5px;
+      }
+
+      div.form-element {
+        border: 1px;
+        border-style: solid;
+        border-color: black;
+        margin: 2px;
+        background-color: white;
+      }
+
+      div.form-element input {
+        border: 0px;
+        width: 100%;
+      }
+
+      div.form-element.error {
+        border-color: red;
+      }
+
+      div.mapCanvas {
+        width: 100%;
+      }
+      
+    </Stylesheet>
+
+    <FormDialog ID="Dialog" Icon="Network/32x32/environment_view.png" Header="Image Coordinate Picker"
+                Text="Please pick your desired coordinate by clicking on the image!" OKButton="Select">
+
+      <!--Define Code Beside-->
+      <CodeBeside Type="Vhs.ImageCoordinatePickerField.Dialogs.ImageCoordinatePickerDialog, Vhs.ImageCoordinatePickerField"/>
+
+      <Groupbox Header="Current Coordinate" Style="height:50px;">
+        <table width="100%">
+          <tr valign="center">
+            <td width="70%">
+              <div class="form-element">
+                <Edit ID="TextBoxCoordinate" ReadOnly="true" Width="100%" MaxLength="200"/>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </Groupbox>
+
+      <Groupbox Header="Image Frame">
+        <Border class="mapCanvas" ID="mapCanvas">
+          <a id="photo">
+            <Image ID="ImageFrame" />
+          </a>
+        </Border>
+      </Groupbox>
+
+    </FormDialog>
+  </ImageCoordinatePickerDialog>
+</control>
