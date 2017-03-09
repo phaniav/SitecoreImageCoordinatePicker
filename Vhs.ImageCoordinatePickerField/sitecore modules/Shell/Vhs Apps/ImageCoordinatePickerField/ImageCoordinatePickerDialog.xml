@@ -8,54 +8,56 @@
     <Script Language="javascript">
         var $J = jQuery.noConflict();
 
-        $J(document).ready(function(){
+        $J(document).ready(function() {
 
-        $J('#photo').click(function(e) {
-        var offset = $J('#ImageFrame').offset();
-        var relativeX = e.pageX - offset.left;
-        var relativeY = e.pageY - offset.top;
+          $J('#photo').click(function(e) {
+          var offset = $J('#ImageFrame').offset();
+          var relativeX = e.pageX - offset.left;
+          var relativeY = e.pageY - offset.top;
 
-        var width = $J('#ImageFrame').width();
-        var height = $J('#ImageFrame').height();
+          var width = $J('#ImageFrame').width();
+          var height = $J('#ImageFrame').height();
 
-        var percentageLeft = relativeX * 100 / width;
-        var percentageTop = relativeY * 100 / height;
+          var percentageLeft = relativeX * 100 / width;
+          var percentageTop = relativeY * 100 / height;
 
-        $J('#TextBoxCoordinate').val('' + percentageTop + ', ' + percentageLeft + '');
+          $J('#TextBoxCoordinate').val('' + percentageTop + ', ' + percentageLeft + '');
 
-        });
+          });
         });
     </Script>
 
     <Stylesheet>
-      table tr td{
-      padding-left: 5px;
+        
+      table tr td {
+        padding-left: 5px;
       }
 
       div.form-element {
-      border: 1px;
-      border-style: solid;
-      border-color: black;
-      margin: 2px;
-      background-color: white;
+        border: 1px;
+        border-style: solid;
+        border-color: black;
+        margin: 2px;
+        background-color: white;
       }
 
       div.form-element input {
-      border: 0px;
-      width: 100%;
+        border: 0px;
+        width: 100%;
       }
 
-      div.form-element.error{
-      border-color: red;
+      div.form-element.error {
+        border-color: red;
       }
 
-      div.mapCanvas{
-      width: 100%;
+      div.mapCanvas {
+        width: 100%;
       }
+      
     </Stylesheet>
 
     <FormDialog ID="Dialog" Icon="Network/32x32/environment_view.png" Header="Image Coordinate Picker"
-                Text="Please pick your desired coordinate by clicking on it!" OKButton="Select">
+                Text="Please pick your desired coordinate by clicking on the image!" OKButton="Select">
 
       <!--Define Code Beside-->
       <CodeBeside Type="Vhs.ImageCoordinatePickerField.Dialogs.ImageCoordinatePickerDialog, Vhs.ImageCoordinatePickerField"/>
